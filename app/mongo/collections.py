@@ -58,7 +58,13 @@ class Customer(Collection):
     def __init__(self):
         super().__init__(COL_CUSTOMERS)
 
+    def create(self, full_name, address, email):
+        self.insert_one(dict(full_name=full_name, address=address, email=email))
+
 
 class Supplier(Collection):
     def __init__(self):
         super().__init__(COL_SUPPLIERS)
+
+    def create(self, company_name, phone_number):
+        self.insert_one(dict(company_name=company_name, phone_number=phone_number))
