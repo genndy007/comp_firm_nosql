@@ -34,11 +34,13 @@ class Collection:
         item_id = self.collection.insert_one(document).inserted_id
         return item_id
 
-    def find_all(self) -> list[dict]:
-        return list(self.collection.find({}))
+    def find(self, params=None) -> list[dict]:
+        if params is None:
+            params = {}
+        return list(self.collection.find(params))
 
-    def find_one(self, object_id) -> dict:
-        return self.collection.find_one({"_id": object_id})
+    def find_one(self, params) -> dict:
+        return self.collection.find_one(params)
 
     def count_documents(self, params=None) -> int:
         if params is None:
